@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>coupon Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet  prefetch' href='css/bootstrap.min.css'>
+
+  
+  
+</head>
+
+<body class="headline">
+  <div class="container" ng-app="myApp">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1 >{{ title }}</h1>
+      </div>
+    </div>
+    
+    <div ui-view></div>
+    
+  </div>
+       <!--login page for coupons-->
+  <script type="text/ng-template" id="login.html">
+    <div class="col-md-12">
+      <h3>Login Page</h3>
+      
+      <form ng-submit="formSubmit()" class="form">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="username" placeholder="username" required=""/>
+          </div> 
+
+          <div class="form-group">
+            <input type="password" class="form-control" ng-model="password" placeholder="password" required=""/>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success" style="float: right;" ui-sref="registar">registar</button>
+            <span class="text-danger">{{ error }}</span>
+
+          </div>
+	     
+
+        </div>
+      </form>
+		
+    </div>
+  </script>
+       <!--the home page for coupons-->
+  <script type="text/ng-template" id="home.html">
+    <div class="col-md-12" >
+      <h3>it is the coupons</h3>
+
+	<table ng-controller="coupons" border="1">
+<tr ng-repeat="cp in coupon">
+  <td>{{cp.company}}</td>
+  <td>{{cp.Country}}</td>
+  <td>{{cp.off}}</td>
+</tr>
+</table>
+
+            <div class="form-group">
+            <button type="submit" class="btn btn-success" ui-sref="login">Login</button>
+            <span class="text-danger">{{ error }}</span>
+          </div>
+    </div>
+  </script>
+      <!--page for rgistar user/company in coupon-->
+<script type="text/ng-template" id="cp.usr.generalregister.html">
+	<div class="col-md-12">
+		<h3>registar option</h3>
+		
+		 <div class="form-group">
+            <button type="submit" class="btn btn-success" ui-sref="companyregistar">company</button>
+          </div>
+
+	 <div class="form-group">
+            <button type="submit" class="btn btn-success" ui-sref="userregistar" >user</button>
+          </div>
+		
+
+</div>
+</script>
+<!-- the user area for registar -->
+<script type="text/ng-template" id="cp.usr.registararea.html">
+	<div class="col-md-12">
+
+	<h3>please fill the detiles</h3>
+	
+
+	<form class="form">
+	<div class="form-group">
+	<h4>user name</h4>
+	<input type="text" class="form-control" ng-model="username" placeholder="new user name" required=""/>
+	</div>
+	<div class="form-group">
+	<h4>password</h4>
+	<input type="password" class="form-control" ng-model="password" placeholder="new password" required=""/>
+        </div>
+        </form>
+		<div class="form-group">
+		<button type="submit" class="btn btn-success" ui-sref="clientarea">submit</button>
+</div>
+		</div>
+</script>
+<!-- company area forr registar to coupon web-->
+<script type="text/ng-template" id="cp.com.registar.html">
+	<div class="col-md-12">
+		<h2>fill your company details</h2>
+		<form class="form">
+		   <div class="form-group">
+			<h4>your company</h2>
+			<input type="text" class="form-control" ng-model="username" placeholder="your company name" required=""/>
+		   </div>
+		   <div class="form-group">
+			<h4>chous password</h4>
+			<input type="password" class="form-control" ng-model="password" placeholder="new password" required=""/>
+		   </div>
+		   <div class="form-group">
+			<h4>your email</h4>
+			<input type="text" class="form-control" ng-model="user_mail" name="user_mail" placeholder="your email addres" required=""/>
+       
+      <div class="binding_fields">
+       <p class="mail_bind">{{user_mail}}</p>
+      </div>
+
+		   </div>
+		</form>
+			<div class="form-group" ng-controller="CompanyAreaRegistar">
+				<button type="submit" class="btn btn-success" ng-click="validateCompanyUser()">submit</button>
+				
+			</div>
+
+      
+	</div>
+	</script>
+
+<!--now it is the client area after is doing login or submit-->
+<script type="text/ng-template" id="cp.clt.area.html">
+	<div class="col-md-12">
+	<h2>chuse what you wont to buy</h2>
+
+</div>
+ </script>
+<!--now it is the company area after is doing login or submit-->
+	<script type="text/ng-template" id="cp.com.area.html">
+
+
+</script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js'></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
